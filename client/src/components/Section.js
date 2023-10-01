@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Section = ({ section }) => {
   return (
@@ -10,4 +10,3 @@ const Section = ({ section }) => {
 };
 
 export default Section;
- 

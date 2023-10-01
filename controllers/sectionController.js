@@ -1,4 +1,4 @@
-const Section = require('../models/Section');
+const Section = require("../models/Section");
 
 // Get all sections
 exports.getAllSections = async (req, res) => {
@@ -6,7 +6,7 @@ exports.getAllSections = async (req, res) => {
     const sections = await Section.find();
     res.json(sections);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -15,11 +15,11 @@ exports.getSectionById = async (req, res) => {
   try {
     const section = await Section.findById(req.params.id);
     if (!section) {
-      return res.status(404).json({ msg: 'Section not found' });
+      return res.status(404).json({ msg: "Section not found" });
     }
     res.json(section);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -29,12 +29,12 @@ exports.createSection = async (req, res) => {
   try {
     let section = new Section({
       title,
-      content
+      content,
     });
     await section.save();
     res.json(section);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -48,7 +48,7 @@ exports.updateSection = async (req, res) => {
   try {
     let section = await Section.findById(req.params.id);
     if (!section) {
-      return res.status(404).json({ msg: 'Section not found' });
+      return res.status(404).json({ msg: "Section not found" });
     }
 
     section = await Section.findByIdAndUpdate(
@@ -59,7 +59,7 @@ exports.updateSection = async (req, res) => {
 
     res.json(section);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };
 
@@ -68,12 +68,12 @@ exports.deleteSection = async (req, res) => {
   try {
     let section = await Section.findById(req.params.id);
     if (!section) {
-      return res.status(404).json({ msg: 'Section not found' });
+      return res.status(404).json({ msg: "Section not found" });
     }
 
     await Section.findByIdAndRemove(req.params.id);
-    res.json({ msg: 'Section removed' });
+    res.json({ msg: "Section removed" });
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 };

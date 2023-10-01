@@ -1,17 +1,17 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
-const dbConfig = require('./config/db');
-const sectionRoutes = require('./config/routes');
+const dbConfig = require("./config/db");
+const sectionRoutes = require("./config/routes");
 
 const app = express();
 
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: false,
   })
 );
 app.use(bodyParser.json());
@@ -24,15 +24,12 @@ const db = dbConfig.url;
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
-  .then(() => console.log('MongoDB successfully connected'))
-  .catch(err => console.log(err));
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch((err) => console.log(err));
 
 // Routes
-app.use('/api/sections', sectionRoutes);
+app.use("/api/sections", sectionRoutes);
 
 const port = process.env.PORT || 5000;
 

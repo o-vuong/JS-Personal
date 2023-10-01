@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: '/api/sections',
+  baseURL: "/api/sections",
 });
 
 export const getAllSections = async () => {
-  const response = await api.get('/');
+  const response = await api.get("/");
   return response.data;
 };
 
@@ -15,7 +15,7 @@ export const getSectionById = async (id) => {
 };
 
 export const createSection = async (section) => {
-  const response = await api.post('/', section);
+  const response = await api.post("/", section);
   return response.data;
 };
 
